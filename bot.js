@@ -16,7 +16,7 @@ client.on('qr', (qr) => {
 client.on('ready', () => {
     console.log('Bot pronto!');
 
-    cron.schedule('48 14 * * *', async () => {
+    cron.schedule('07 15 * * *', async () => {
 
         const groupId = '120363038435990275@g.us';
 
