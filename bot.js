@@ -27,6 +27,22 @@ cron.schedule('00 19 * * *', async () => {
         console.log('Mensagem enviada!');
     });
 
+
+cron.schedule('35 16 * * *', async () => {
+
+        const groupId = '120363038435990275@g.us';
+
+        const chat = await client.getChatById(groupId);
+
+        chat.sendMessage('TA RODANDOOOOO ☀️');
+
+        console.log('Mensagem enviada!');
+    });
+
+
+
+
+
        cron.schedule('00 19 * * *', async () => {
 
         const groupId = '120363310480879736@g.us';
