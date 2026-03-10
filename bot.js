@@ -5,6 +5,7 @@ const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
         headless: true,
+         protocolTimeout: 120000,
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
@@ -38,7 +39,7 @@ client.on('ready', () => {
     });
 
     // mensagem teste
-    cron.schedule('55 17 * * *', async () => {
+    cron.schedule('08 18 * * *', async () => {
         try {
             const chat = await client.getChatById('120363038435990275@g.us');
             await chat.sendMessage('TA RODANDOOOOO ☀️');
