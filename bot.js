@@ -39,7 +39,7 @@ client.on('ready', () => {
     });
 
     // mensagem teste
-    cron.schedule('08 18 * * *', async () => {
+    cron.schedule('20 18 * * *', async () => {
         try {
             const chat = await client.getChatById('120363038435990275@g.us');
             await chat.sendMessage('TA RODANDOOOOO ☀️');
