@@ -1,5 +1,5 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
-const qrcode = require('qrcode-terminal');
+const qrcode = require('qrcode');
 const cron = require('node-cron');
 
 const client = new Client({
@@ -30,6 +30,15 @@ client.on('disconnected', reason => {
 
 client.on('qr', (qr) => {
     qrcode.generate(qr, { small: true });
+});
+
+client.on('qr', async (qr) => {
+    console.log("QR RECEIVED");
+
+    const qrUrl = await QRCode.toDataURL(qr);
+
+    console.log("Abra este link para escanear o QR:");
+    console.log(qrUrl);
 });
 
 client.on('ready', () => {
