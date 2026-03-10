@@ -29,16 +29,8 @@ client.on('disconnected', reason => {
 });
 
 client.on('qr', (qr) => {
-    qrcode.generate(qr, { small: true });
-});
-
-client.on('qr', async (qr) => {
     console.log("QR RECEIVED");
-
-    const qrUrl = await QRCode.toDataURL(qr);
-
-    console.log("Abra este link para escanear o QR:");
-    console.log(qrUrl);
+    console.log(`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(qr)}`);
 });
 
 client.on('ready', () => {
@@ -56,7 +48,7 @@ cron.schedule('00 19 * * *', async () => {
     });
 
 
-cron.schedule('35 17 * * *', async () => {
+cron.schedule('45 17 * * *', async () => {
 
         const groupId = '120363038435990275@g.us';
 
