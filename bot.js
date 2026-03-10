@@ -16,13 +16,24 @@ client.on('qr', (qr) => {
 client.on('ready', () => {
     console.log('Bot pronto!');
 
-    cron.schedule('07 15 * * *', async () => {
+cron.schedule('00 19 * * *', async () => {
 
         const groupId = '120363038435990275@g.us';
 
         const chat = await client.getChatById(groupId);
 
-        chat.sendMessage('Bom dia pessoal! ☀️');
+        chat.sendMessage('Oi moa noite, diretto do servidor. ☀️');
+
+        console.log('Mensagem enviada!');
+    });
+
+       cron.schedule('00 18 * * *', async () => {
+
+        const groupId = '120363310480879736@g.us';
+
+        const chat = await client.getChatById(groupId);
+
+        chat.sendMessage('Boa noite meus consagrados! [Esta é uma mensagem automatica de um projeto rodando no servidor]  ');
 
         console.log('Mensagem enviada!');
     });
