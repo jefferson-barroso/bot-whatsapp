@@ -3,7 +3,10 @@ const qrcode = require('qrcode-terminal');
 const cron = require('node-cron');
 
 const client = new Client({
-    authStrategy: new LocalAuth()
+    authStrategy: new LocalAuth(),
+    puppeteer: {
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+    }
 });
 
 client.on('qr', (qr) => {
@@ -25,14 +28,14 @@ client.on('ready', () => {
     });
 });
 
-// client.on('message_create', async msg => {
-//     const chat = await msg.getChat();
+client.on('message_create', async msg => {
+    const chat = await msg.getChat();
 
-//     if (chat.isGroup) {
-//         console.log(chat.name);
-//         console.log(chat.id._serialized);
-//     }
-// });
+    if (chat.isGroup) {
+        console.log(chat.name);
+        console.log(chat.id._serialized);
+    }
+});
 
 client.initialize();
 
