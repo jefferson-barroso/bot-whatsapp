@@ -5,8 +5,20 @@ const cron = require('node-cron');
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
-    }
+        args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-gpu'
+        ]    }
+});
+
+client.on('auth_failure', msg => {
+    console.error('Falha de autenticação', msg);
+});
+
+client.on('disconnected', reason => {
+    console.log('Bot desconectado:', reason);
 });
 
 client.on('qr', (qr) => {
