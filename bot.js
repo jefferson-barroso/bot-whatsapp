@@ -27,7 +27,7 @@ cron.schedule('00 19 * * *', async () => {
         console.log('Mensagem enviada!');
     });
 
-       cron.schedule('00 18 * * *', async () => {
+       cron.schedule('00 19 * * *', async () => {
 
         const groupId = '120363310480879736@g.us';
 
