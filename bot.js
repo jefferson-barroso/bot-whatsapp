@@ -5,12 +5,19 @@ const cron = require('node-cron');
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
+        headless: true,
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
             '--disable-dev-shm-usage',
             '--disable-gpu'
-        ]    }
+        ]
+    }
+});
+
+client.on('disconnected', () => {
+    console.log("Reconectando...");
+    client.initialize();
 });
 
 client.on('auth_failure', msg => {
@@ -40,7 +47,7 @@ cron.schedule('00 19 * * *', async () => {
     });
 
 
-cron.schedule('35 16 * * *', async () => {
+cron.schedule('35 17 * * *', async () => {
 
         const groupId = '120363038435990275@g.us';
 
